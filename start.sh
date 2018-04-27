@@ -82,8 +82,8 @@ if [ ! -f /web/html/index.php ]; then
   sed -i "s/||DB_NAME||/$MYSQL_DATABASE/g" /web/html/Include/Config.php
   sed -i "s/||DB_USER||/$MYSQL_USER/g" /web/html/Include/Config.php
   sed -i "s/||DB_PASSWORD||/`cat $MYSQL_PASSWORD_FILE`/g" /web/html/Include/Config.php
-  sed -i "s/||URL||/$CHURCHCRM_URL/g" /web/html/Include/Config.php
-  # use hash as root path (with slashes causes issues with sed)
+  # use hash for root path and url (with slashes causes issues with sed)
+  sed -i "s#||URL||#$CHURCHCRM_URL#g" /web/html/Include/Config.php
   sed -i "s#||ROOT_PATH||#$CHURCHCRM_ROOT_PATH#g" /web/html/Include/Config.php
   chown -R apache:www-data /web/html
   chmod -R 755 /web/html
